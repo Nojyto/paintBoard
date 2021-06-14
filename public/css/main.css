@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Titillium Web", sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #292929;
+  -webkit-box-shadow: inset 0 0 2px #000000;
+          box-shadow: inset 0 0 2px #000000;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #F1F1F1;
+  border-radius: 6px;
+}
+
+.flexContainer, button, .colorPicker, .imageLoader, header, main, footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.component, #canvas, header, main section, footer {
+  -webkit-box-shadow: 0 0 15px #000000;
+          box-shadow: 0 0 15px #000000;
+  background-color: #1B1B1B;
+}
+
+#canvas {
+  border: 1px solid #000000;
+  border-radius: 6px 0 0 6px;
+  background-color: #F1F1F1;
+}
+
+input[type=file] {
+  display: none;
+}
+
+button, .colorPicker, .imageLoader {
+  float: right;
+  text-align: center;
+  text-decoration: none;
+  width: 100px;
+  height: 25px;
+  border-radius: 0.18em;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 0.1em solid #F1F1F1;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  color: #F1F1F1;
+  background-color: #1B1B1B;
+}
+
+button:hover, .colorPicker:hover, .imageLoader:hover {
+  color: #1B1B1B;
+  background-color: #F1F1F1;
+}
+
+.slider {
+  margin-top: 7px;
+  height: 11px;
+  -webkit-appearance: none;
+  background: #000000;
+  outline: none;
+  border-radius: 15px;
+  overflow: hidden;
+  -webkit-box-shadow: inset 0 0 5px #000000;
+          box-shadow: inset 0 0 5px #000000;
+  float: right;
+  width: 100px;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #F1F1F1;
+  cursor: pointer;
+  border: 4px solid #333;
+  -webkit-box-shadow: -407px 0 0 400px #F1F1F1;
+          box-shadow: -407px 0 0 400px #F1F1F1;
+}
+
+.switch {
+  float: right;
+  position: relative;
+  width: 35px;
+  height: 16px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle {
+  position: absolute;
+  cursor: pointer;
+  height: 16px;
+  top: 40%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 16px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.toggle:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 1px;
+  bottom: 1px;
+  background-color: #F1F1F1;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle {
+  background-color: #FF2800;
+}
+
+input:focus + .toggle {
+  -webkit-box-shadow: 0 0 1px #FF2800;
+          box-shadow: 0 0 1px #FF2800;
+}
+
+input:checked + .toggle:before {
+  -webkit-transform: translateX(18px);
+  transform: translateX(18px);
+}
+
+html {
+  color: #F1F1F1;
+  background-color: #292929;
+  scroll-behavior: smooth;
+}
+
+header {
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  position: fixed;
+  width: 100%;
+  height: 64px;
+  opacity: 98.5%;
+  top: 0;
+  z-index: 100;
+}
+
+header img {
+  width: auto;
+  margin: 8px;
+  height: 48px;
+}
+
+main {
+  -webkit-box-align: top;
+      -ms-flex-align: top;
+          align-items: top;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  min-height: 1000px;
+}
+
+main section {
+  border-radius: 0 6px 6px 0;
+  height: 802px;
+  width: 250px;
+  padding: 8px 15px;
+  background-color: #1B1B1B;
+}
+
+main section div {
+  width: 220px;
+  height: 25px;
+  margin-top: 4px;
+}
+
+footer {
+  width: 100%;
+  height: 64px;
+  bottom: 0;
+}
+
+footer p {
+  font-size: 16px;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,111 @@
+.flexContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.component{
+    box-shadow: 0 0 15px $fullblack;
+    background-color: $black;
+}
+
+#canvas {
+    @extend .component;
+    border: 1px solid $fullblack;
+    border-radius: 6px 0 0 6px;
+    background-color: $white;
+}
+
+input[type=file] {
+    display: none;
+}
+
+button, .colorPicker, .imageLoader {
+    @extend .flexContainer;
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    height: 25px;
+    border-radius: 0.18em;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 0.1em solid $white;
+    transition: all 0.2s;
+    color: $white;
+    background-color: $black;
+    &:hover{
+        color: $black;
+        background-color: $white;
+    }
+}
+
+.slider {
+    margin-top: 7px;
+    height: 11px;
+    -webkit-appearance: none;
+    background: $fullblack;
+    outline: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px $fullblack;
+    float: right;
+    width: 100px;
+    cursor: pointer;
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: $white;
+        cursor: pointer;
+        border: 4px solid #333;
+        box-shadow: -407px 0 0 400px $white;
+    }
+}
+
+.switch {
+    float: right;
+    position: relative;
+    width: 35px;
+    height: 16px;
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+}
+
+.toggle {
+    position: absolute;
+    cursor: pointer;
+    height: 16px;
+    top:  40%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 16px;
+    -webkit-transition: .4s;
+    transition: .4s;
+    &:before {
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        left: 1px;
+        bottom: 1px;
+        background-color: $white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 50%;
+    }
+    input:checked + & {background-color: $red;}
+    input:focus   + & {box-shadow: 0 0 1px $red;}
+    input:checked + &:before {
+        -webkit-transform: translateX(18px);
+        -ms-transform: translateX(18px);
+        transform: translateX(18px);
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport"      content="width=device-width, initial-scale=1.0"/>
+    <meta name="keywords"      content="paint, board, sketch, photoshop, edit, image">
+    <meta name="description"   content="A sketch site that anyone can join and contribute too.">
+    <meta name="author"        content="Nojyto">
+    <link rel="icon"       href="dependencies/icon.png"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script>
+    <script defer src="js/script.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Paint Board</title>
+</head>
+<body>
+    <header>
+        <img src="dependencies/icon.png" alt="logo">
+        <h1>Paint board</h1>
+    </header>
+    <main>
+        <canvas id="canvas" width="400" height="800"></canvas>
+        <section>
+            <h1>Control menu</h1>
+            <div>
+                <label for="mode">Edit mode:</label>
+                <label class="switch">
+                    <input type="checkbox" id="editMode">
+                    <span class="toggle"></span>
+                </label>
+            </div>
+            <div>
+                <label for="width">Line width:</label>
+                <output id="width">2</output>
+                <input type="range" id="brushWidth" class="slider" min="1" max="50" value="2" onchange="updateBrushWidth(this.value)" onmousemove="updateBrushWidth(this.value)">        
+            </div>
+            <div>
+                <label for="color">Line color:</label>
+                <input type="color" class="colorPicker" id="brushColor" value="#FF2800" onchange="updateBrushColor(this.value)">
+            </div>
+            <div>
+                <label for="imageLoader">Insert a image:</label>
+                
+                <label class="imageLoader"><input type="file" id="imageLoader"/>Insert</label>
+            </div>
+            <div>
+                <label for="clearCanvas">Clear canvas:</label>
+                <button id="clearCanvas">Clear</button>
+            </div>
+            <div>
+                <label for="downloadImg">Save canvas:</label>
+                <a id="downloadImg" href="#"><button>Save</button></a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Copyright © 2021 All rights reserved Nojyto.</p>
+    </footer>
+</body>
+</html>
