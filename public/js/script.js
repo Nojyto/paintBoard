@@ -1,6 +1,6 @@
 let canvas
 
-window.onload = async () => {
+window.onload = () => {
     canvas = new fabric.Canvas("canvas", {isDrawingMode:true})
     canvas.freeDrawingBrush.width = 3
     canvas.freeDrawingBrush.color = "#FF2800"
