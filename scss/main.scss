@@ -35,14 +35,7 @@ main {
         @extend .component;
         border-radius: 0 6px 6px 0;
         height: 802px;
-        width: 250px;
-        padding: 8px 15px;
-        background-color: $black;
-        div{
-            width: 220px;
-            height: 25px;
-            margin-top: 4px;
-        }
+        width: 130px;
     }
 }
 

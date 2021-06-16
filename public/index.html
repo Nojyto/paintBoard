@@ -22,36 +22,35 @@
     <main>
         <canvas id="canvas" width="400" height="800"></canvas>
         <section>
-            <h1>Control menu</h1>
-            <div>
-                <label for="mode">Edit mode:</label>
-                <label class="switch">
-                    <input type="checkbox" id="editMode">
-                    <span class="toggle"></span>
-                </label>
-            </div>
-            <div>
-                <label for="width">Line width:</label>
-                <output id="width">2</output>
-                <input type="range" id="brushWidth" class="slider" min="1" max="50" value="2" onchange="updateBrushWidth(this.value)" onmousemove="updateBrushWidth(this.value)">        
-            </div>
-            <div>
-                <label for="color">Line color:</label>
-                <input type="color" class="colorPicker" id="brushColor" value="#FF2800" onchange="updateBrushColor(this.value)">
-            </div>
-            <div>
-                <label for="imageLoader">Insert a image:</label>
-                
-                <label class="imageLoader"><input type="file" id="imageLoader"/>Insert</label>
-            </div>
-            <div>
-                <label for="clearCanvas">Clear canvas:</label>
-                <button id="clearCanvas">Clear</button>
-            </div>
-            <div>
-                <label for="downloadImg">Save canvas:</label>
-                <a id="downloadImg" href="#"><button>Save</button></a>
-            </div>
+            <h1>Controls</h1>
+            
+            <input type="range"
+                    class="slider"
+                    min="1" max="50" value="2"
+                    onchange="updateBrushWidth(this.value)"/>   
+                        
+            <input type="color"
+                    class="colorSelector"
+                    value="#FF2800"
+                    onchange="updateBrushColor(this.value)"/>
+            
+            <label>
+                <input type="checkbox"
+                        id="editMode"
+                        onchange="toggleEditMode(false)"/>
+                <span class="toggle">Edit mode</span>
+            </label>
+
+            <label class="imageLoader">
+                <input type="file" onchange="insertImg(event)"/>
+                Insert
+            </label>
+
+            <button onclick="delSelectedObj()">Delete</button>
+
+            <button onclick="clearCanvas()">Clear</button>
+
+            <a id="downloadImg" href="#" onclick="saveCanvas(false)"><button>Save</button></a>
         </section>
     </main>
     <footer>
