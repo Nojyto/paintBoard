@@ -7,8 +7,7 @@ window.onload = () => {
     canvas.freeDrawingBrush.color = "#FF2800"
 }
 
-/*
-socket.on("update", (img) => {
+/*socket.on("update", (img) => {
     canvas.loadFromJSON(img, () => canvas.renderAll())
 })
 
@@ -30,8 +29,75 @@ function toggleEditMode(isKeyBind){
     canvas.isDrawingMode = !mode.checked
 }
 
+function groupSelection(){
+    if(canvas.getActiveObject() && canvas.getActiveObject().type === "activeSelection"){
+        canvas.getActiveObject().toGroup()
+        canvas.requestRenderAll()
+    }else if(canvas.getActiveObject() && canvas.getActiveObject().type === "group") {
+        canvas.getActiveObject().toActiveSelection();
+        canvas.requestRenderAll();
+    }
+}
+
+function copySelection() {
+	canvas.getActiveObject().clone((cloned) => {_clipboard = cloned})
+}
+
+function pasteSelection() {
+    if(!document.getElementById("editMode").checked) toggleEditMode(true)
+	_clipboard.clone((clonedObj) => {
+        canvas.discardActiveObject()
+        clonedObj.set({
+            left: clonedObj.left + 10,
+            top: clonedObj.top + 10,
+            evented: true,
+        })
+        if (clonedObj.type === "activeSelection") {
+            clonedObj.canvas = canvas;
+            clonedObj.forEachObject((obj) => {canvas.add(obj)})
+            clonedObj.setCoords();
+        } else {
+           canvas.add(clonedObj);
+        }
+        canvas.setActiveObject(clonedObj);
+        canvas.requestRenderAll();
+        
+        _clipboard = clonedObj;
+    })
+}
+
+function insertTxtBox(){
+    let fontSize = prompt("Enter font size", 16)
+    if(fontSize === null) return
+    if(fontSize === "" || isNaN(fontSize)){
+        alert("Invalid input. Action aborted.")
+        return
+    }
+
+    let color = prompt("Enter text color", "black")
+    if(color === null) return
+    if(fontSize === "" || !(color => {
+        const s = new Option().style
+        s.color = color
+        return s.color !== ''
+    })){
+        alert("Invalid input. Action aborted.")
+        return
+    }
+
+    if(!document.getElementById("editMode").checked) toggleEditMode(true)
+    canvas.add(new fabric.Textbox("Text", {
+        width: 125,
+        top: 10,
+        left: 10,
+        fontSize: fontSize,
+        fill: color,
+        textAlign: "center",
+        fixedWidth: 150
+    }))
+}
+
 function insertImg(e){
-    console.log("yeet")
     let reader = new FileReader()
         reader.onload = (evt) => {
             let imgObj = new Image()
@@ -51,20 +117,21 @@ function insertImg(e){
 }
 
 function delSelectedObj(){
-    var activeObject = canvas.getActiveObject(),
+    let activeObject = canvas.getActiveObject(),
     activeGroup = canvas.getActiveGroup()
     if(activeObject){
         canvas.remove(activeObject)
     }else if (activeGroup) {
-        var objectsInGroup = activeGroup.getObjects();
+        let objectsInGroup = activeGroup.getObjects();
         canvas.discardActiveGroup();
         objectsInGroup.forEach((obj) => {canvas.remove(obj)})
     }
 }
 
 function clearCanvas(){
+    if(!confirm("Are you sure you want to clear the canvas?")) return
     canvas.clear()
-    socket.emit("invoke", JSON.stringify(canvas))
+    //socket.emit("invoke", JSON.stringify(canvas))
 }
 
 function saveCanvas(isKeyBind){
@@ -76,18 +143,21 @@ function saveCanvas(isKeyBind){
 
 document.addEventListener("keyup", (evt) => {
     switch(evt.key){
-        case "E": case "e":
+        /*case "E": case "e":
             toggleEditMode(true)
-            break
+            break 
+        case "T": case "t":
+            insertTxtBox()
+            break*/
         case "Delete":
             delSelectedObj()
             break
-        case "C": case "c":
+        /*case "C": case "c":
             clearCanvas()
             break
         case "S": case "s":
             saveCanvas(true)
-            break
+            break*/
         default: break
     }
 })

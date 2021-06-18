@@ -5,18 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport"      content="width=device-width, initial-scale=1.0"/>
     <meta name="keywords"      content="paint, board, sketch, photoshop, edit, image">
-    <meta name="description"   content="A sketch site that anyone can join and contribute too.">
+    <meta name="description"   content="A live sketch site that anyone can join and contribute too.">
     <meta name="author"        content="Nojyto">
-    <link rel="icon"       href="dependencies/icon.png"/>
+    <link rel="icon"       href="dependencies/favicon.png"/>
     <link rel="stylesheet" href="css/main.css"/>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.min.js"></script>
-    <script defer src="js/script.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js" integrity="sha512-1+czAStluVmzKLZD98uvRGNVbc+r9zLKV4KeAJmvikygfO71u3dtgo2G8+uB1JjCh2GVln0ofOpz9ZTxqJQX/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <script defer src="js/script.js"></script>
+    <!--<script src="/socket.io/socket.io.js"></script>-->
     <title>Paint Board</title>
 </head>
 <body>
     <header>
-        <img src="dependencies/icon.png" alt="logo">
+        <img src="dependencies/favicon.png" alt="logo">
         <h1>Paint board</h1>
     </header>
     <main>
@@ -38,19 +37,54 @@
                 <input type="checkbox"
                         id="editMode"
                         onchange="toggleEditMode(false)"/>
-                <span class="toggle">Edit mode</span>
+                <span class="toggle">
+                    <img src="dependencies/icons/edit.svg" alt="edit" draggable="false">
+                    Edit mode
+                </span>
             </label>
+            
+            <button onclick="groupSelection()">
+                <img src="dependencies/icons/group.svg" alt="group" draggable="false">
+                Group
+            </button>
+
+            <button onclick="copySelection()">
+                <img src="dependencies/icons/copy.svg" alt="copy" draggable="false">
+                Copy
+            </button>
+
+            <button onclick="pasteSelection()">
+                <img src="dependencies/icons/clipboard.svg" alt="paste" draggable="false">
+                Paste
+            </button>
+
+            <button onclick="insertTxtBox()">
+                <img src="dependencies/icons/text.svg" alt="text" draggable="false">
+                Insert txt
+            </button>
 
             <label class="imageLoader">
                 <input type="file" onchange="insertImg(event)"/>
-                Insert
+                <img src="dependencies/icons/img.svg" alt="img" draggable="false">
+                Insert img
             </label>
 
-            <button onclick="delSelectedObj()">Delete</button>
+            <button onclick="delSelectedObj()">
+                <img src="dependencies/icons/delete.svg" alt="delete" draggable="false">
+                Delete
+            </button>
 
-            <button onclick="clearCanvas()">Clear</button>
+            <button onclick="clearCanvas()">
+                <img src="dependencies/icons/trash.svg" alt="trash" draggable="false">
+                Clear
+            </button>
 
-            <a id="downloadImg" href="#" onclick="saveCanvas(false)"><button>Save</button></a>
+            <a id="downloadImg" href="#" onclick="saveCanvas(false)">
+                <button>
+                    <img src="dependencies/icons/save.svg" alt="save" draggable="false">
+                    Save
+                </button>
+            </a>
         </section>
     </main>
     <footer>

@@ -31,7 +31,11 @@ main {
     justify-content: center;
     width: 100%;
     min-height: 1000px;
-    section{
+    section{        
+        h1{
+            margin: 5px;
+            text-align: center;
+        }
         @extend .component;
         border-radius: 0 6px 6px 0;
         height: 802px;

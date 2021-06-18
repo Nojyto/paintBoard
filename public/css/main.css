@@ -29,7 +29,17 @@
   border-radius: 6px;
 }
 
-.flexContainer, button, .colorSelector, .imageLoader, .toggle, header, main, footer {
+input[type=checkbox] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+input[type=file] {
+  display: none;
+}
+
+.flexContainer, header, main, footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,21 +61,6 @@
   border: 1px solid #000000;
   border-radius: 6px 0 0 6px;
   background-color: #F1F1F1;
-}
-
-h1 {
-  margin: 5px;
-  text-align: center;
-}
-
-input[type=checkbox] {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-input[type=file] {
-  display: none;
 }
 
 .slider {
@@ -102,11 +97,10 @@ input[type=file] {
 }
 
 button, .colorSelector, .imageLoader, .toggle {
-  margin: 5px 5px 0 5px;
+  margin: 5.5px 7.5px 0 7.5px;
   float: right;
-  text-align: center;
-  text-decoration: none;
-  width: 120px;
+  text-align: left;
+  width: 115px;
   height: 25px;
   border-radius: 0.18em;
   border: 0.1em solid #F1F1F1;
@@ -124,9 +118,28 @@ button:hover, .colorSelector:hover, .imageLoader:hover, .toggle:hover {
   background-color: #F1F1F1;
 }
 
+button:hover img, .colorSelector:hover img, .imageLoader:hover img, .toggle:hover img {
+  -webkit-filter: invert(0);
+          filter: invert(0);
+}
+
+button img, .colorSelector img, .imageLoader img, .toggle img {
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
+  width: 19px;
+  height: 19px;
+  margin: 1px 4px 0 16px;
+  float: left;
+}
+
 input:checked + .toggle {
   color: #1B1B1B;
   background-color: #F1F1F1;
+}
+
+input:checked + .toggle img {
+  -webkit-filter: invert(0);
+          filter: invert(0);
 }
 
 input:checked + .toggle:hover {
@@ -173,6 +186,11 @@ main section {
   border-radius: 0 6px 6px 0;
   height: 802px;
   width: 130px;
+}
+
+main section h1 {
+  margin: 5px;
+  text-align: center;
 }
 
 footer {
