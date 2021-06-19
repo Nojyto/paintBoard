@@ -1,11 +1,19 @@
 //const socket = io.connect("/");
 let canvas
 
+
 window.onload = () => {
     canvas = new fabric.Canvas("canvas", {isDrawingMode:true})
     canvas.freeDrawingBrush.width = 3
     canvas.freeDrawingBrush.color = "#FF2800"
+    /*canvas.setHeight(window.innerHeigh - 64);
+    canvas.setWidth(window.innerWidth - 64);*/
 }
+
+/*window.addEventListener("resize", () => {
+    canvas.setHeight(window.innerHeight - 64);
+    canvas.setWidth(window.innerWidth - 64);
+})*/
 
 /*socket.on("update", (img) => {
     canvas.loadFromJSON(img, () => canvas.renderAll())
@@ -117,15 +125,12 @@ function insertImg(e){
 }
 
 function delSelectedObj(){
-    let activeObject = canvas.getActiveObject(),
-    activeGroup = canvas.getActiveGroup()
-    if(activeObject){
-        canvas.remove(activeObject)
-    }else if (activeGroup) {
-        let objectsInGroup = activeGroup.getObjects();
-        canvas.discardActiveGroup();
-        objectsInGroup.forEach((obj) => {canvas.remove(obj)})
-    }
+    let selection = canvas.getActiveObject();
+    if(selection.type === "activeSelection")
+        selection.forEachObject((el) => {canvas.remove(el)})
+    else
+        canvas.remove(selection)
+    canvas.discardActiveObject().requestRenderAll()
 }
 
 function clearCanvas(){
@@ -143,21 +148,12 @@ function saveCanvas(isKeyBind){
 
 document.addEventListener("keyup", (evt) => {
     switch(evt.key){
-        /*case "E": case "e":
+        case "Insert":
             toggleEditMode(true)
             break 
-        case "T": case "t":
-            insertTxtBox()
-            break*/
         case "Delete":
             delSelectedObj()
             break
-        /*case "C": case "c":
-            clearCanvas()
-            break
-        case "S": case "s":
-            saveCanvas(true)
-            break*/
         default: break
     }
 })
